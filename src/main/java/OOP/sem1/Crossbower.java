@@ -10,7 +10,7 @@ public class Crossbower extends Hero{
                 new int[]{10, 15}, nameHero);
         rangeMaxDamage = 4;
     }
-int rangeMaxDamage;
+protected int rangeMaxDamage;
 
     @Override
     public String toString() {

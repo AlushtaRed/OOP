@@ -8,7 +8,7 @@ public class Sniper extends Hero {
                 2,
                 new int[]{10, 15}, nameHero);
     }
-    int rangeMaxDamage;
+    protected int rangeMaxDamage;
 
     @Override
     public String toString() {

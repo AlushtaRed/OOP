@@ -23,8 +23,8 @@ spearman crossbowman monk
 public abstract class Hero {
 
     protected int health, healthMax, armor;
-    int[] damage;
-    String nameHero;
+    protected int[] damage;
+    protected String nameHero;
 
     public Hero(int health, int healthMax, int armor, int[] damage, String nameHero) {
         this.health = health;
