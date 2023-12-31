@@ -50,6 +50,16 @@ public abstract class Hero {
         float minDistance = Collections.min(distances);
         return minDistance;
     }
+    public Hero findNearestEnemy(ArrayList<Hero> enemys){
+        Hero heroTMP = enemys.get(0);
+        for (int i = 0; i < enemys.size(); i++) {
+            if (this.position.rangeEnemy(enemys.get(i).position) < this.position.rangeEnemy(heroTMP.position)){
+                heroTMP = enemys.get(i);
+            }
+        }
+        return heroTMP;
+    }
+
 }
 
 

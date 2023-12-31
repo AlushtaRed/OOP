@@ -32,4 +32,5 @@ public class Sniper extends Hero implements Shooter {
             }
         }
     }
+
 }
