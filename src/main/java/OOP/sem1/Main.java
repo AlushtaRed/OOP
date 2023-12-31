@@ -7,13 +7,12 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        heroesWhite = generateCommand(0,0);
-        heroesBlack = generateCommand(3,9);
-
-        heroesWhite.forEach(n -> System.out.println(n.toString())); // Печать команды
-        System.out.println("**************************");
-        heroesBlack.forEach(n -> n.printEnemysDistance(heroesWhite)); // Печать расстояния до противника
-
+//        heroesWhite = generateCommand(0,0);
+//        heroesBlack = generateCommand(3,9);
+//
+//        heroesWhite.forEach(n -> System.out.println(n.toString())); // Печать команды
+//        System.out.println("**************************");
+//        heroesBlack.forEach(n -> n.printEnemysDistance(heroesWhite)); // Печать расстояния до противника
 
     }
 

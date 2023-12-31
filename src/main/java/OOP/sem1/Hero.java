@@ -21,6 +21,8 @@ spearman crossbowman monk
  * */
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public abstract class Hero {
 
@@ -42,6 +44,12 @@ public abstract class Hero {
         System.out.println();
     }
 
+    public float findMinDistance(ArrayList<Hero> enemys){
+        ArrayList<Float> distances = new ArrayList<>();
+        enemys.forEach(n-> distances.add(position.rangeEnemy(n.position)));
+        float minDistance = Collections.min(distances);
+        return minDistance;
+    }
 }
 
 
