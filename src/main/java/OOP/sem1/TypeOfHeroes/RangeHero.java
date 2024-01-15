@@ -31,31 +31,24 @@ public abstract class RangeHero extends Hero {
         this.rangeMaxDamage = rangeMaxDamage;
     }
 
-    public void getShoot(Hero target) {
-        if (quantityShots > 0) {
-            if (this.position.rangeEnemy(target.position) < rangeMaxDamage) {
-                int damagePoint = this.random.nextInt(damage[0], damage[1]);
-                target.health = target.health - damagePoint;
-                quantityShots--;
-            } else {
-                target.health = target.health - damage[0];
-                quantityShots--;
-            }
-        }
-    }
+//    public void getShoot(Hero target) {
+//        int damagePoint = (this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0];
+//        target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
+//    }
+
     public Hero findBestEnemyRDD(ArrayList<Hero> enemys) { //дописать проверку на жизнь
         Hero heroTMP = enemys.get(0);
         for (int i = 0; i < enemys.size(); i++) {
-            if (heroTMP.health <1){
+            if (heroTMP.health < 1) {
                 heroTMP = enemys.get(i);
             }
             if (this.position.rangeEnemy(enemys.get(i).position) < this.position.rangeEnemy(heroTMP.position)) {
                 heroTMP = enemys.get(i);
             }
         }
-        if (this.position.rangeEnemy(heroTMP.position)> this.rangeMaxDamage){
-            for (Hero enemy: enemys ) {
-                if (heroTMP.health > enemy.health){
+        if (this.position.rangeEnemy(heroTMP.position) > this.rangeMaxDamage) {
+            for (Hero enemy : enemys) {
+                if (heroTMP.health > enemy.health) {
                     heroTMP = enemy;
                 }
             }
@@ -69,10 +62,11 @@ public abstract class RangeHero extends Hero {
     }
 
     @Override
-    public void gameStep(ArrayList<Hero> enemy) {
-        if (this.health > 0) {
-            getShoot(findBestEnemyRDD(enemy));
-            System.out.println("Нанесен урон" + this.damagePoint);
-        }
+    public void gameStep(ArrayList<Hero> teamEnemy, ArrayList<Hero> teamAllies) {
+        if (this.health == 0 || this.quantityShots == 0) return;
+        Hero target = findBestEnemyRDD(teamEnemy);
+        target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
+        System.out.println("Нанесен урон" + this.damagePoint);
+        quantityShots--;
     }
 }

@@ -60,6 +60,10 @@ public abstract class Hero implements GameI {
         this.position = new Vector2(posX, posY);
         this.initiative = initiative;
     }
+    public void getDamage(int damage){
+        health -= damage;
+        if (health < 0) health = 0;
+    }
 
     /**
      * @param enemys - список вражеских героев (ArrayList<Hero>)

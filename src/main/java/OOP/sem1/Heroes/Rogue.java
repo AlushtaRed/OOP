@@ -7,7 +7,7 @@ import OOP.sem1.Vector2;
 public class Rogue extends MeleeHero {
 
     public Rogue(String nameHero, int posX, int posY) {
-        super(100, 100, 5, new int[]{20, 30}, nameHero, posX, posY, 3);
+        super(100, 100, 5, new int[]{20, 30}, nameHero, posX, posY, 1);
         Vector2 position;
     }
 

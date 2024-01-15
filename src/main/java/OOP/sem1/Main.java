@@ -27,9 +27,9 @@ public class Main {
         });
         for (Hero h: twoCommands) {
             if (heroesBlack.contains(h)){
-                h.gameStep(heroesWhite);
+                h.gameStep(heroesWhite, heroesBlack);
             } else {
-                h.gameStep(heroesBlack);
+                h.gameStep(heroesBlack, heroesWhite);
             }
         }
 //        twoCommands.forEach(n-> System.out.println(n.getInitiative())); // Печать инициативы
@@ -48,14 +48,14 @@ public class Main {
 //        MeleeHero war2 = new Pikeman("Лёха", 9, 8);
 //        RangeHero hunter3 = new Sniper("Санек", 9,7);
 //        System.out.println("Созданы персонажи");
-//        System.out.println(village);
-//        System.out.println(hunter1);
-//        System.out.println(hunter2);
+////        System.out.println(village);
+////        System.out.println(hunter1);
+////        System.out.println(hunter2);
 //        System.out.println(war1);
 //        System.out.println(war2);
 //        System.out.println(enemy);
-//        System.out.println(enemy2);
-//        System.out.println(hunter3);
+////        System.out.println(enemy2);
+////        System.out.println(hunter3);
 //        System.out.println(">>>>>>>>><<<<<<<<<<");
 //        hunter1.getShoot(enemy);
 //        System.out.println(">>>Выстрел!");

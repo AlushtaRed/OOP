@@ -55,9 +55,9 @@ public abstract class HealerHero extends Hero {
     }
 
     @Override
-    public void gameStep(ArrayList<Hero> team) {
+    public void gameStep(ArrayList<Hero> teamAllies, ArrayList<Hero> teamEnemy ) {
         if (this.health > 0) {
-            getHealing(findMinHealthAllies(team));
+            getHealing(findMinHealthAllies(teamAllies));
             System.out.println("Нанесен урон" + this.healingPoint);
         }
     }

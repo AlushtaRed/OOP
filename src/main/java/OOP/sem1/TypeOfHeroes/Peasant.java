@@ -54,9 +54,9 @@ public class Peasant extends Hero {
     }
 
     @Override
-    public void gameStep(ArrayList<Hero> team) {
+    public void gameStep(ArrayList<Hero> teamAllies, ArrayList<Hero> teamEnemy) {
         if (this.health > 0) {
-            getArrow(findMoreEmptyRDD(team));
+            getArrow(findMoreEmptyRDD(teamAllies));
         }
     }
 }
