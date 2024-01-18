@@ -29,23 +29,26 @@ public abstract class MeleeHero extends Hero {
     }
 
     public void getDamage(Hero target) {
-        if (this.position.rangeEnemy(target.position) < 2) {
-            damagePoint = this.random.nextInt(damage[0], damage[1]);
-            target.health = target.health - damagePoint;
-        } else {
-            System.out.println("Где я?");
+        damagePoint = this.random.nextInt(damage[0], damage[1]);
+        target.health = target.health - damagePoint;
+        if (target.health < 0){
+            target.health = 0;
         }
     }
 
     public Hero findBestEnemyMDD(ArrayList<Hero> enemys) {
-        Hero heroTMP = enemys.get(0);
+        Hero heroTMP = null;
         for (int i = 0; i < enemys.size(); i++) {
-            if (this.position.rangeEnemy(enemys.get(i).position) < this.position.rangeEnemy(heroTMP.position) && enemys.get(i).health > 0) {
-                heroTMP = enemys.get(i);
+            if (enemys.get(i).health>0) {
+                if (heroTMP == null || this.position.rangeEnemy(enemys.get(i).position) < this.position.rangeEnemy(heroTMP.position)) {
+                    heroTMP = enemys.get(i);
+                }
             }
         }
         return heroTMP;
     }
+
+
 
     public Vector2 getStepMDD(Hero enemy) {
         Vector2 delta = position.getDelta(enemy.position); //return new Vector2(posX - posEnemy.posX, posY - posEnemy.posY);
@@ -79,14 +82,14 @@ public abstract class MeleeHero extends Hero {
     public void gameStep(ArrayList<Hero> teamEnemy, ArrayList<Hero> teamAllies) {
         if (this.health == 0) return;
         Hero tmpHero = findBestEnemyMDD(teamEnemy);
-        if (position.rangeEnemy(tmpHero.position) < 2){
+        if (position.rangeEnemy(tmpHero.position) < 2) {
             getDamage(tmpHero);
-            System.out.println("Нанесен урон" + this.damagePoint);
+            //System.out.println("Нанесен урон" + this.damagePoint);
         } else {
             Vector2 tmpVec = getStepMDD(tmpHero);
             boolean step = true;
-            for (Hero hero: teamAllies) {
-                if (tmpVec.equals(hero.position)) step = false;
+            for (Hero hero : teamAllies) {
+                if (tmpVec.equals(hero.position) && hero.health>0) step = false;
             }
             if (step) position = tmpVec;
         }

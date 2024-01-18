@@ -66,7 +66,7 @@ public abstract class RangeHero extends Hero {
         if (this.health == 0 || this.quantityShots == 0) return;
         Hero target = findBestEnemyRDD(teamEnemy);
         target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
-        System.out.println("Нанесен урон" + this.damagePoint);
+        //System.out.println("Нанесен урон" + this.damagePoint);
         quantityShots--;
     }
 }

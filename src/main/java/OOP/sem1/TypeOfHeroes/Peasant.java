@@ -29,6 +29,9 @@ public class Peasant extends Hero {
 
 
     public void getArrow(Hero target) {
+        if (target == null) {
+            return;
+        }
         if (((RangeHero) target).quantityShots < ((RangeHero) target).quantityShotsMax) {
             ((RangeHero) target).quantityShots++;
         }
@@ -54,9 +57,14 @@ public class Peasant extends Hero {
     }
 
     @Override
-    public void gameStep(ArrayList<Hero> teamAllies, ArrayList<Hero> teamEnemy) {
+    public void gameStep(ArrayList<Hero> teamEnemy, ArrayList<Hero> teamAllies) {
         if (this.health > 0) {
             getArrow(findMoreEmptyRDD(teamAllies));
         }
+    }
+
+    @Override
+    public String getInfo() {
+        return "Крестьянин";
     }
 }

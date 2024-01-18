@@ -35,9 +35,12 @@ public abstract class HealerHero extends Hero {
      * Метод лечения цели
      */
     public void getHealing(Hero target) {
-        if (target.health > 0) {
+        if (target.health > 0 && target.health < target.healthMax) {
             healingPoint = this.random.nextInt(damage[0], damage[1]);
             target.health = target.health + healingPoint;
+            if (target.health>target.healthMax){
+                target.health = target.healthMax;
+            }
         }
     }
     public Hero findMinHealthAllies(ArrayList<Hero> allies) {
@@ -58,7 +61,7 @@ public abstract class HealerHero extends Hero {
     public void gameStep(ArrayList<Hero> teamAllies, ArrayList<Hero> teamEnemy ) {
         if (this.health > 0) {
             getHealing(findMinHealthAllies(teamAllies));
-            System.out.println("Нанесен урон" + this.healingPoint);
+            //System.out.println("Нанесен урон" + this.healingPoint);
         }
     }
 }

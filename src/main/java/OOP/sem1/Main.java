@@ -9,29 +9,51 @@ import OOP.sem1.TypeOfHeroes.RangeHero;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
-        heroesWhite = generateCommand(0,0);
-        heroesBlack = generateCommand(3,9);
-        ArrayList<Hero> twoCommands = new ArrayList<>();
+        heroesWhite = generateCommand(0,1);
+        heroesBlack = generateCommand(3,10);
         twoCommands.addAll(heroesBlack);
         twoCommands.addAll(heroesWhite);
         twoCommands.sort(((o1, o2) -> o2.getInitiative()- o1.getInitiative())); //сортировка лямбдой
-        twoCommands.sort(new Comparator<Hero>() {
-            @Override
-            public int compare(Hero o1, Hero o2) {
-                return o2.getInitiative() - o1.getInitiative();
+//        twoCommands.sort(new Comparator<Hero>() {
+//            @Override
+//            public int compare(Hero o1, Hero o2) {
+//                return o2.getInitiative() - o1.getInitiative();
+//            }
+//        });
+        Scanner scanner = new Scanner(System.in);
+        boolean flag;
+        while (true){
+            View.view();
+            if (gameOverBlack()){
+                flag = true;
+                break;
             }
-        });
-        for (Hero h: twoCommands) {
-            if (heroesBlack.contains(h)){
-                h.gameStep(heroesWhite, heroesBlack);
-            } else {
-                h.gameStep(heroesBlack, heroesWhite);
+            if (gameOverWhite()){
+                flag = false;
+                break;
             }
+            for (Hero h: twoCommands) {
+                if (heroesBlack.contains(h)){
+                    h.gameStep(heroesWhite, heroesBlack);
+                } else {
+                    h.gameStep(heroesBlack, heroesWhite);
+                }
+            }
+            scanner.nextLine();
         }
+        if (flag){
+            System.out.println("Победила команда белых");
+        } else {
+            System.out.println("Победила команда черных");
+        }
+
+
+
 //        twoCommands.forEach(n-> System.out.println(n.getInitiative())); // Печать инициативы
 //
 //        heroesWhite.forEach(n -> System.out.println(n.toString())); // Печать команды
@@ -92,9 +114,23 @@ public class Main {
 //        System.out.println(enemy);
 
     }
+public static boolean gameOverWhite(){
+    for (Hero hero : heroesWhite) {
+        if (hero.health > 0) return false;
+    }
+    return true;
+}
+public static boolean gameOverBlack(){
+        for (Hero hero : heroesBlack) {
+            if (hero.health > 0) return false;
+        }
+        return true;
+    }
 
-    static ArrayList<Hero> heroesWhite = new ArrayList<>();
-    static ArrayList<Hero> heroesBlack = new ArrayList<>();
+   public static ArrayList<Hero> heroesWhite = new ArrayList<>();
+   public static ArrayList<Hero> heroesBlack = new ArrayList<>();
+
+   public static ArrayList<Hero> twoCommands = new ArrayList<>();
 
     static ArrayList<Hero> generateCommand(int n, int y) {
         ArrayList<Hero> commandHeroes = new ArrayList<>();
@@ -102,7 +138,7 @@ public class Main {
         int rand;
 
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 11; i++) {
             rand = random.nextInt(1, 5) + n;
             switch (rand) {
                 case 1:
