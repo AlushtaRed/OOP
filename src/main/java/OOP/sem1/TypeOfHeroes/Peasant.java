@@ -67,4 +67,9 @@ public class Peasant extends Hero {
     public String getInfo() {
         return "Крестьянин";
     }
+
+    @Override
+    public String getType() {
+        return "Peasant";
+    }
 }

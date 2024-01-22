@@ -100,6 +100,8 @@ public abstract class Hero implements GameI {
         }
         return heroTMP;
     }
+
+    public abstract String getType();
     /*
     etNearestEnemy(ArrayList<HeroBase> enemies) {
         HeroBase nearestEnemy = null;

@@ -36,6 +36,11 @@ public abstract class MeleeHero extends Hero {
         }
     }
 
+    @Override
+    public String getType() {
+        return "Melee";
+    }
+
     public Hero findBestEnemyMDD(ArrayList<Hero> enemys) {
         Hero heroTMP = null;
         for (int i = 0; i < enemys.size(); i++) {
