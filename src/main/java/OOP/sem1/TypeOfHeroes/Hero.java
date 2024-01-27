@@ -1,33 +1,9 @@
-package OOP.sem1;
-
-/**
- * Описание структуры класса
- * <p>
- * Hero - Абстрактный базовый класс, описывающий самые общие черты героев
- * Каждый элемент базового класса имеет следующие поля:
- * - имя (String nameHero),
- * - здоровье (int health),
- * - максимальное здоровье (int healthMax),
- * - защита (int armor),
- * - урон ([]int damage)
- * - местоположение на игровой плоскости (Vector2 position)
- * <p>
- * Наследники Hero:
- * - HealerHero
- * - MeleeHero
- * - RangeHero
- * - Peasant
- * <p>
- * Методы:
- * printEnemysDistance - в качестве аргумента получает список вражеских героев (ArrayList<Hero>) и выводит в консоль расстояние до вражеских героев (void)
- * findMinDistance - в качестве аргумента получает список вражеских героев (ArrayList<Hero>) и возвращает минимальное расстояние до вражеского героя (float)
- * findNearestEnemy - в качестве аргумента получает список вражеских героев (ArrayList<Hero>) и возвращает ближайшего вражеского героя (Hero)
- */
+package OOP.sem1.TypeOfHeroes;
 
 import OOP.sem1.Interfaces.GameI;
+import OOP.sem1.Vector2;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
@@ -60,7 +36,8 @@ public abstract class Hero implements GameI {
         this.position = new Vector2(posX, posY);
         this.initiative = initiative;
     }
-    public void getDamage(int damage){
+
+    protected void getDamage(int damage) {
         health -= damage;
         if (health < 0) health = 0;
     }
@@ -91,7 +68,7 @@ public abstract class Hero implements GameI {
     public Hero findNearestEnemy(ArrayList<Hero> enemys) {
         Hero heroTMP = null;
         for (int i = 0; i < enemys.size(); i++) {
-            if (enemys.get(i).health>0){
+            if (enemys.get(i).health > 0) {
                 if (heroTMP == null || this.position.rangeEnemy(enemys.get(i).position) < this.position.rangeEnemy(heroTMP.position)) {
                     heroTMP = enemys.get(i);
                 }
@@ -120,17 +97,15 @@ public abstract class Hero implements GameI {
         return new int[]{position.posX, position.posY};
     }
 
-    public int getInitiative(){
+    public int getInitiative() {
         return initiative;
     }
 
     public int getHp() {
         return health;
     }
+
     public abstract String getInfo();
 
 
 }
-
-
-

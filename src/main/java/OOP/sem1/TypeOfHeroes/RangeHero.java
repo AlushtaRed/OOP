@@ -1,9 +1,6 @@
 package OOP.sem1.TypeOfHeroes;
 
-import OOP.sem1.Hero;
-
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Описание структуры класса
@@ -39,7 +36,7 @@ public abstract class RangeHero extends Hero {
 //        target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
 //    }
 
-    public Hero findBestEnemyRDD(ArrayList<Hero> enemys) { //дописать проверку на жизнь
+    protected Hero findBestEnemyRDD(ArrayList<Hero> enemys) { //дописать проверку на жизнь
         Hero heroTMP = enemys.get(0);
         for (int i = 0; i < enemys.size(); i++) {
             if (heroTMP.health < 1) {
@@ -61,7 +58,7 @@ public abstract class RangeHero extends Hero {
 
     @Override
     public String toString() {
-        return (nameHero + " здоровье: " + health + "/" + healthMax + " броня: " + armor + " Выстрелы " + this.quantityShots + "/" + this.quantityShotsMax);
+        return (nameHero + " здоровье: " + health + "/" + healthMax + " Выстрелы " + this.quantityShots + "/" + this.quantityShotsMax);
     }
 
     @Override

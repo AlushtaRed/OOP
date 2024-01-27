@@ -1,11 +1,8 @@
 package OOP.sem1.TypeOfHeroes;
 
-import OOP.sem1.Hero;
-import OOP.sem1.Interfaces.GameI;
 import OOP.sem1.Vector2;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Описание структуры класса
@@ -28,7 +25,7 @@ public abstract class MeleeHero extends Hero {
         this.step = step;
     }
 
-    public void getDamage(Hero target) {
+    protected void getDamage(Hero target) {
         damagePoint = this.random.nextInt(damage[0], damage[1]);
         target.health = target.health - damagePoint;
         if (target.health < 0){
@@ -41,7 +38,7 @@ public abstract class MeleeHero extends Hero {
         return "Melee";
     }
 
-    public Hero findBestEnemyMDD(ArrayList<Hero> enemys) {
+    protected Hero findBestEnemyMDD(ArrayList<Hero> enemys) {
         Hero heroTMP = null;
         for (int i = 0; i < enemys.size(); i++) {
             if (enemys.get(i).health>0) {
@@ -55,7 +52,7 @@ public abstract class MeleeHero extends Hero {
 
 
 
-    public Vector2 getStepMDD(Hero enemy) {
+    protected Vector2 getStepMDD(Hero enemy) {
         Vector2 delta = position.getDelta(enemy.position); //return new Vector2(posX - posEnemy.posX, posY - posEnemy.posY);
         Vector2 tmpVector2 = new Vector2(position.posX, position.posY);
         if (delta.posX < 0) {
@@ -80,13 +77,14 @@ public abstract class MeleeHero extends Hero {
 
     @Override
     public String toString() {
-        return (nameHero + " здоровье: " + health + "/" + healthMax + " броня: " + armor);
+        return (nameHero + " здоровье: " + health + "/" + healthMax);
     }
 
     @Override
     public void gameStep(ArrayList<Hero> teamEnemy, ArrayList<Hero> teamAllies) {
         if (this.health == 0) return;
         Hero tmpHero = findBestEnemyMDD(teamEnemy);
+        if (tmpHero == null) return;
         if (position.rangeEnemy(tmpHero.position) < 2) {
             getDamage(tmpHero);
             //System.out.println("Нанесен урон" + this.damagePoint);

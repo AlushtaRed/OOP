@@ -1,6 +1,6 @@
 package OOP.sem1.Interfaces;
 
-import OOP.sem1.Hero;
+import OOP.sem1.TypeOfHeroes.Hero;
 
 import java.util.ArrayList;
 

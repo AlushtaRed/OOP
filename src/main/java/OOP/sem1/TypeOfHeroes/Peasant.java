@@ -1,11 +1,8 @@
 package OOP.sem1.TypeOfHeroes;
 
-import OOP.sem1.Hero;
-import OOP.sem1.Interfaces.GameI;
 import OOP.sem1.Vector2;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Описание структуры класса
@@ -24,11 +21,11 @@ public class Peasant extends Hero {
 
     @Override
     public String toString() {
-        return ("Крестьянин: " + nameHero + " здоровье: " + health + "/" + healthMax + " броня: " + armor);
+        return ("Крестьянин: " + nameHero + " здоровье: " + health + "/" + healthMax);
     }
 
 
-    public void getArrow(Hero target) {
+    protected void getArrow(Hero target) {
         if (target == null) {
             return;
         }
@@ -37,7 +34,7 @@ public class Peasant extends Hero {
         }
     }
 
-    public Hero findMoreEmptyRDD(ArrayList<Hero> allies) {
+    protected Hero findMoreEmptyRDD(ArrayList<Hero> allies) {
         ArrayList<RangeHero> rdd = new ArrayList<>();
         for (Hero hero : allies) {
             if (hero instanceof RangeHero && hero.health > 0) {

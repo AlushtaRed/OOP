@@ -1,13 +1,10 @@
 package OOP.sem1;
 
 import OOP.sem1.Heroes.*;
-import OOP.sem1.TypeOfHeroes.HealerHero;
-import OOP.sem1.TypeOfHeroes.MeleeHero;
+import OOP.sem1.TypeOfHeroes.Hero;
 import OOP.sem1.TypeOfHeroes.Peasant;
-import OOP.sem1.TypeOfHeroes.RangeHero;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
