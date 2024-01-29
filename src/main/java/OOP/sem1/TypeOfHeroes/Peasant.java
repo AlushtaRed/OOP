@@ -4,13 +4,6 @@ import OOP.sem1.Vector2;
 
 import java.util.ArrayList;
 
-/**
- * Описание структуры класса
- * Класс, описывающий тип героев, предоставляющий РДД боеприпасы
- * <p>
- * Методы:
- * getArrow - метод передачи стрел союзному РДД
- */
 public class Peasant extends Hero {
 
     public Peasant(String nameHero, int posX, int posY) {

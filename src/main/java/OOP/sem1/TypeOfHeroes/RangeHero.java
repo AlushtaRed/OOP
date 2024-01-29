@@ -2,24 +2,10 @@ package OOP.sem1.TypeOfHeroes;
 
 import java.util.ArrayList;
 
-/**
- * Описание структуры класса
- * Абстрактный класс, описывающий тип героев, которые будут наносить урон в дальнем бою
- * Каждый элемент данного класса имеет следующие дополнительные поля:
- * - максимальный запас стрел (int quantityShotsMax),
- * - запас стрел (int quantityShots),
- * - дистанция нанесения максимального укрона (int rangeMaxDamage)
- * <p>
- * Наследники HealerHero:
- * - Crossbower
- * - Sniper
- * <p>
- * Методы:
- * getShoot - метод нанесения урона вражескому герою (с дистанции)
- */
+
 public abstract class RangeHero extends Hero {
     int quantityShotsMax, quantityShots, rangeMaxDamage;
-    private int damagePoint;
+    // private int damagePoint;
 
     public Hero angryRDD = null;
 
@@ -31,12 +17,8 @@ public abstract class RangeHero extends Hero {
         this.rangeMaxDamage = rangeMaxDamage;
     }
 
-//    public void getShoot(Hero target) {
-//        int damagePoint = (this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0];
-//        target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
-//    }
 
-    protected Hero findBestEnemyRDD(ArrayList<Hero> enemys) { //дописать проверку на жизнь
+    protected Hero findBestEnemyRDD(ArrayList<Hero> enemys) { 
         Hero heroTMP = enemys.get(0);
         for (int i = 0; i < enemys.size(); i++) {
             if (heroTMP.health < 1) {
@@ -72,7 +54,6 @@ public abstract class RangeHero extends Hero {
         }
         Hero target = findBestEnemyRDD(teamEnemy);
         target.getDamage((this.position.rangeEnemy(target.position) < rangeMaxDamage)? this.random.nextInt(damage[0], damage[1]): damage[0]);
-        //System.out.println("Нанесен урон" + this.damagePoint);
         quantityShots--;
     }
 

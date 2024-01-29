@@ -4,19 +4,7 @@ import OOP.sem1.Vector2;
 
 import java.util.ArrayList;
 
-/**
- * Описание структуры класса
- * Абстрактный класс, описывающий тип героев, которые будут наносить урон в ближнем бою
- * Каждый элемент данного класса имеет следующие дополнительные поля:
- * - шаг (int step)
- * <p>
- * Наследники HealerHero:
- * - Pikeman
- * - Rogue
- * <p>
- * Методы:
- * getDamage - метод нанесения урона вражескому герою (в ближнем бою)
- */
+
 public abstract class MeleeHero extends Hero {
     int step, damagePoint;
 

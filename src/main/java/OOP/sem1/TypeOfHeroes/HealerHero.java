@@ -2,37 +2,20 @@ package OOP.sem1.TypeOfHeroes;
 
 import java.util.ArrayList;
 
-/**
- * Описание структуры класса
- * Абстрактный класс, описывающий тип героев, которые будут исцелять союзных героев
- * Каждый элемент данного класса имеет следующие дополнительные поля:
- * - мана (int mana),
- * - максимальное значение маны (int manaMax)
- * <p>
- * Наследники HealerHero:
- * - Wizard
- * - Monk
- * <p>
- * Методы:
- * getHealing - метод лечения союзного героя
- */
+
 public abstract class HealerHero extends Hero {
     int mana, manaMax, healingPoint, manaCost;
     int manaRes = 6;
     boolean flagRes = false;
 
-    /**
-     * Конструктор
-     */
+    
     public HealerHero(int health, int healthMax, int armor, int[] damage, String nameHero, int posX, int posY, int mana, int manaMax) {
         super(health, healthMax, armor, damage, nameHero, posX, posY, 1);
         this.mana = mana;
         this.manaMax = manaMax;
     }
 
-    /**
-     * Метод лечения цели
-     */
+   
     protected void getHealing(Hero target) {
         manaCost = 10;
         if (this.mana >= manaCost) {
